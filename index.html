@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Sales Calculator</h2>
+        
+        <label>Enter the amount (DZD)</label>
+        <input type="number" id="amountInput" placeholder="Amount in DZD" oninput="updateFromAmount()" onfocus="clearInput('weightInput')">
+        
+        <label>Enter the weight (grams)</label>
+        <input type="number" id="weightInput" placeholder="Weight in grams" oninput="updateFromWeight()" onfocus="clearInput('amountInput')">
+        
+        <label>Amount Paid</label>
+        <input type="number" id="paidInput" placeholder="Amount Paid" oninput="calculateChange()">
+        
+        <p>Change: <span id="changeResult">0</span> DZD</p>
+
+        <button id="installApp">📲 Download App</button>
+        <p>Total Profit: <span id="profitResult">0</span> DZD</p>
+        <button id="doneBtn" onclick="calculateProfitAndReset()">✅ Done</button>
+        <button id="undoProfit" onclick="undoLastProfit()">↩ Undo Last Profit</button>
+
+
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log("Service Worker Registered"))
+                .catch(err => console.log("Service Worker Failed", err));
+        }
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault();
+            deferredPrompt = event;
+            document.getElementById('installApp').style.display = 'block';
+
+            document.getElementById('installApp').addEventListener('click', () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User installed the app');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

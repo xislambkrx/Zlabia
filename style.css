@@ -1,0 +1,73 @@
+*{
+    border: none;
+    outline: none;
+}
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #121212; /* خلفية داكنة */
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    background: #1e1e1e; /* خلفية داكنة للصندوق */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    max-width: 400px;
+    margin: auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #333;
+    color: white;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#doneBtn {
+    background-color: #28a745;
+}
+
+#doneBtn:hover {
+    background-color: #218838;
+}
+
+#undoProfit {
+    background-color: #dc3545;
+}
+
+#undoProfit:hover {
+    background-color: #c82333;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* إخفاء الأسهم في فايرفوكس */
+}
