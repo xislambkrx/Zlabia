@@ -1,6 +1,7 @@
 *{
     border: none;
     outline: none;
+    overflow: hidden;
 }
 body {
     font-family: Arial, sans-serif;
